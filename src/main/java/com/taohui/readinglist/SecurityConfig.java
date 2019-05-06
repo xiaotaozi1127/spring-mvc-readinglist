@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 return userDetails.get();
             }
             throw new UsernameNotFoundException("User '" + username + "' not found.");
-        });
+        })
+        .passwordEncoder(new CustomPasswordEncoder());
     }
 }
