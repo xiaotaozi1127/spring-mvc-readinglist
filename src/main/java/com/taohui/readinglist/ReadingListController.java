@@ -1,7 +1,6 @@
 package com.taohui.readinglist;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/readingList")
 public class ReadingListController {
     private ReadingListRepository readingListRepository;
     private AmazonProperties amazonProperties;
@@ -37,6 +36,6 @@ public class ReadingListController {
     public String addToReadingList(@PathVariable("reader") String reader, Book book){
         book.setReader(reader);
         readingListRepository.save(book);
-        return "redirect:/{reader}";
+        return "redirect:/readingList/{reader}";
     }
 }
