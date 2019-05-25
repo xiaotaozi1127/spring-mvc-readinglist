@@ -1,5 +1,6 @@
 package com.taohui.readinglist;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +33,10 @@ public class unsecureTests {
     @Test
     public void homePage() throws Exception {
         mockMvc.perform(get("/readingList/th"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(view().name("readingList"))
+                .andExpect(model().attributeExists("books"))
+                .andExpect(model().attribute("books", Matchers.is(Matchers.empty())));
     }
 
 }
