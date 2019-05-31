@@ -43,7 +43,7 @@ public class secureTest {
 
     @Test
 //    @WithUserDetails("hui")
-    @WithMockUser(username="hui")
+    @WithMockUser(username="hui", password="password", roles = "READER")
     public void homePage_authenticatedUser() throws Exception {
         Reader expectedReader = new Reader();
         expectedReader.setUsername("hui");
