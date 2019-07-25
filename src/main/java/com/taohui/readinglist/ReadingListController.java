@@ -15,14 +15,16 @@ public class ReadingListController {
     private BookRepository bookRepository;
     private AmazonProperties amazonProperties;
 
+    private static final String reader = "hui";
+
     @Autowired
     public ReadingListController(BookRepository bookRepository, AmazonProperties amazonProperties){
         this.bookRepository = bookRepository;
         this.amazonProperties = amazonProperties;
     }
 
-    @GetMapping("/{reader}")
-    public String readersBooks(@PathVariable("reader") String reader, Model model){
+    @GetMapping
+    public String readersBooks(Model model){
         List<Book> books = bookRepository.findByReader(reader);
         if(books != null){
             model.addAttribute("books", books);
@@ -32,10 +34,10 @@ public class ReadingListController {
         return "readingList";
     }
 
-    @PostMapping("/{reader}")
-    public String addToReadingList(@PathVariable("reader") String reader, Book book){
+    @PostMapping
+    public String addToReadingList(Book book){
         book.setReader(reader);
         bookRepository.save(book);
-        return "redirect:/readingList/{reader}";
+        return "redirect:/readingList";
     }
 }
