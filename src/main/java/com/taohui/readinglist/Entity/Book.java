@@ -1,4 +1,4 @@
-package com.taohui.readinglist;
+package com.taohui.readinglist.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
