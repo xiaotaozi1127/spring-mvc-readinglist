@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/readingList")
+@RequestMapping("/")
 public class ReadingListController {
     private BookRepository bookRepository;
     private AmazonProperties amazonProperties;
@@ -38,6 +38,6 @@ public class ReadingListController {
     public String addToReadingList(Book book){
         book.setReader(reader);
         bookRepository.save(book);
-        return "redirect:/readingList";
+        return "redirect:/";
     }
 }
